@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SysInfo App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .list-group-item:nth-child(odd){
+            background: purple;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="lead">SysInfoApp</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        console.log(process);
+        let output = `
+        <h2 class="text-center">App Version Data</h2>
+        <ul class="list-group">
+          <li class="list-group-item">Node: ${process.versions.node}</li>    
+          <li class="list-group-item">Chrome: ${process.versions.chrome}</li>    
+          <li class="list-group-item">Electron: ${process.versions.electron}</li>    
+        </ul>
+        <h2 class="text-center mt-3">System Specs</h2>
+        <ul class="list-group">
+          <li class="list-group-item">System Architecture: ${process.arch}</li>    
+          <li class="list-group-item">Process Identifier: ${process.env.PROCESSOR_IDENTIFIER}</li>    
+          <li class="list-group-item">Processor Architecture: ${process.env.PROCESSOR_ARCHITECTURE}</li>    
+        </ul>
+        `;
+        document.querySelector('#output').innerHTML = output;
+    </script>
+
+    <script>
+        require('./renderer.js');
+    </script>
+</body>
+
+</html>
